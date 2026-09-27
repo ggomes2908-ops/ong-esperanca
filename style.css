@@ -217,3 +217,95 @@ main section {
         grid-column: span 12;
     }
 }
+/* ========================================
+   MENU DROPDOWN
+   ======================================== */
+
+nav {
+    position: relative;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--espaco-4);
+    align-items: center;
+    list-style: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--cor-primaria-escura);
+    padding: var(--espaco-2);
+    min-width: 180px;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.dropdown:hover .submenu {
+    display: flex;
+}
+
+/* Ícone do menu */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+
+/* ========================================
+   MENU HAMBÚRGUER - CELULAR
+   ======================================== */
+
+@media (max-width: 480px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: var(--espaco-2);
+        margin-top: var(--espaco-3);
+    }
+
+    #menu-toggle:checked ~ ul {
+        display: flex;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .submenu {
+        position: static;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dropdown:hover .submenu {
+        display: none;
+    }
+
+    .dropdown:focus-within .submenu {
+        display: flex;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
