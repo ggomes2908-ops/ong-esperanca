@@ -521,3 +521,34 @@ button:disabled {
 #app button:hover {
     background-color: var(--cor-primaria-escura);
 }
+/* CORREÇÃO DO LAYOUT DA SPA */
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--espaco-6);
+    box-sizing: border-box;
+}
+
+/* Área onde o JavaScript coloca o conteúdo */
+#app {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#app section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Garante que textos e imagens ocupem corretamente o espaço */
+#app p {
+    max-width: 100%;
+}
+
+#app img {
+    max-width: 100%;
+    height: auto;
+}
