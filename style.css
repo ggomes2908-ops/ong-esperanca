@@ -466,3 +466,58 @@ button:disabled {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     max-width: 350px;
 }
+/* AJUSTE PARA O CONTEÚDO DA SPA */
+
+#app {
+    width: 100%;
+}
+
+#app section {
+    background-color: var(--cor-branco);
+    padding: var(--espaco-5);
+    margin-bottom: var(--espaco-5);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#app h2 {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-titulo);
+}
+
+#app p {
+    font-size: var(--fonte-corpo);
+}
+
+#app img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#app form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+    max-width: 500px;
+}
+
+#app input {
+    padding: var(--espaco-2);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#app button {
+    padding: var(--espaco-2);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#app button:hover {
+    background-color: var(--cor-primaria-escura);
+}
