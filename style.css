@@ -99,3 +99,110 @@ footer {
     text-align: center;
     padding: var(--espaco-4);
 }
+/* ========================================
+   GRID RESPONSIVO - ONG ESPERANÇA
+   ======================================== */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-4);
+}
+
+/* As seções ocupam as 12 colunas */
+main section {
+    grid-column: span 12;
+}
+
+
+/* ========================================
+   BREAKPOINT 1 - Celulares pequenos
+   ======================================== */
+
+@media (max-width: 480px) {
+
+    main {
+        grid-template-columns: 1fr;
+        padding: var(--espaco-3);
+    }
+
+    main section {
+        grid-column: span 1;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: var(--espaco-2);
+    }
+}
+
+
+/* ========================================
+   BREAKPOINT 2 - Celulares maiores
+   ======================================== */
+
+@media (min-width: 481px) and (max-width: 600px) {
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--espaco-4);
+    }
+
+    main section {
+        grid-column: span 2;
+    }
+}
+
+
+/* ========================================
+   BREAKPOINT 3 - Tablets
+   ======================================== */
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+    main {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    main section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ========================================
+   BREAKPOINT 4 - Notebooks
+   ======================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    main {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    main section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ========================================
+   BREAKPOINT 5 - Desktops grandes
+   ======================================== */
+
+@media (min-width: 1025px) {
+
+    main {
+        grid-template-columns: repeat(12, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    main section {
+        grid-column: span 12;
+    }
+}
