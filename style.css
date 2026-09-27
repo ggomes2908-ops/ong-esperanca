@@ -1,5 +1,8 @@
 :root {
-    /* CORES */
+    /* ==============================
+       CORES
+       ============================== */
+
     --cor-primaria: #2E7D32;
     --cor-primaria-clara: #4CAF50;
     --cor-primaria-escura: #1B5E20;
@@ -12,14 +15,22 @@
     --cor-texto: #212121;
     --cor-texto-secundario: #616161;
 
-    /* TIPOGRAFIA */
+
+    /* ==============================
+       TIPOGRAFIA
+       ============================== */
+
     --fonte-pequena: 0.875rem;
     --fonte-corpo: 1rem;
     --fonte-subtitulo: 1.25rem;
     --fonte-titulo: 2rem;
     --fonte-principal: 2.5rem;
 
-    /* ESPAÇAMENTOS */
+
+    /* ==============================
+       ESPAÇAMENTOS
+       ============================== */
+
     --espaco-1: 4px;
     --espaco-2: 8px;
     --espaco-3: 16px;
@@ -27,6 +38,16 @@
     --espaco-5: 32px;
     --espaco-6: 48px;
 }
+
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -36,8 +57,13 @@ body {
     line-height: 1.6;
 }
 
+
+/* ==============================
+   CABEÇALHO
+   ============================== */
+
 header {
-     background-color: var(--cor-primaria);
+    background-color: var(--cor-primaria);
     color: var(--cor-branco);
     padding: var(--espaco-4);
 
@@ -49,10 +75,19 @@ header {
 
 header h1 {
     font-size: var(--fonte-principal);
-    margin: 0 0 var(--espaco-3);
+    margin: 0;
 }
 
-nav ul {
+
+/* ==============================
+   NAVEGAÇÃO
+   ============================== */
+
+nav {
+    position: relative;
+}
+
+nav > ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -62,28 +97,119 @@ nav ul {
     align-items: center;
 }
 
+nav li {
+    position: relative;
+}
+
 nav a {
     color: var(--cor-branco);
     text-decoration: none;
     font-weight: bold;
+
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
     color: var(--cor-secundaria-clara);
 }
 
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: var(--espaco-6);
+nav a:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
 }
 
-section {
+nav a:active {
+    color: var(--cor-secundaria);
+}
+
+
+/* ==============================
+   MENU DROPDOWN
+   ============================== */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .submenu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 180px;
+    padding: 8px;
+    margin: 0;
+
+    background-color: var(--cor-primaria-escura);
+
+    flex-direction: column;
+    gap: 8px;
+
+    list-style: none;
+    z-index: 1000;
+}
+
+.dropdown:hover > .submenu {
+    display: flex;
+}
+
+.submenu li {
+    width: 100%;
+}
+
+.submenu a {
+    display: block;
+    padding: 8px;
+    color: var(--cor-branco);
+}
+
+
+/* ==============================
+   MENU HAMBÚRGUER
+   ============================== */
+
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+
+/* ==============================
+   GRID PRINCIPAL
+   ============================== */
+
+main {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: var(--espaco-6);
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-4);
+}
+
+main section {
+    grid-column: span 12;
+
     background-color: var(--cor-branco);
     padding: var(--espaco-5);
     margin-bottom: var(--espaco-5);
     border-radius: 8px;
 }
+
+
+/* ==============================
+   TÍTULOS E TEXTOS
+   ============================== */
 
 h2 {
     color: var(--cor-primaria);
@@ -94,15 +220,26 @@ p {
     font-size: var(--fonte-corpo);
 }
 
+
+/* ==============================
+   IMAGENS
+   ============================== */
+
 img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
+
+/* ==============================
+   RODAPÉ
+   ============================== */
+
 footer {
-   background-color: var(--cor-primaria-escura);
+    background-color: var(--cor-primaria-escura);
     color: var(--cor-branco);
+
     text-align: center;
     padding: var(--espaco-4);
 
@@ -110,25 +247,11 @@ footer {
     justify-content: center;
     align-items: center;
 }
-/* ========================================
-   GRID RESPONSIVO - ONG ESPERANÇA
-   ======================================== */
-
-main {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--espaco-4);
-}
-
-/* As seções ocupam as 12 colunas */
-main section {
-    grid-column: span 12;
-}
 
 
-/* ========================================
-   BREAKPOINT 1 - Celulares pequenos
-   ======================================== */
+/* ==========================================================
+   BREAKPOINT 1 - CELULARES PEQUENOS
+   ========================================================== */
 
 @media (max-width: 480px) {
 
@@ -145,152 +268,16 @@ main section {
         font-size: 2rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: var(--espaco-2);
-    }
-}
-
-
-/* ========================================
-   BREAKPOINT 2 - Celulares maiores
-   ======================================== */
-
-@media (min-width: 481px) and (max-width: 600px) {
-
-    main {
-        grid-template-columns: repeat(2, 1fr);
-        padding: var(--espaco-4);
-    }
-
-    main section {
-        grid-column: span 2;
-    }
-}
-
-
-/* ========================================
-   BREAKPOINT 3 - Tablets
-   ======================================== */
-
-@media (min-width: 601px) and (max-width: 768px) {
-
-    main {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    main section {
-        grid-column: span 6;
-    }
-}
-
-
-/* ========================================
-   BREAKPOINT 4 - Notebooks
-   ======================================== */
-
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    main {
-        grid-template-columns: repeat(12, 1fr);
-    }
-
-    main section {
-        grid-column: span 6;
-    }
-}
-
-
-/* ========================================
-   BREAKPOINT 5 - Desktops grandes
-   ======================================== */
-
-@media (min-width: 1025px) {
-
-    main {
-        grid-template-columns: repeat(12, 1fr);
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    main section {
-        grid-column: span 12;
-    }
-}
-/* ===== MENU DROPDOWN ===== */
-
-nav {
-    position: relative;
-}
-
-nav > ul {
-    display: flex;
-    gap: var(--espaco-4);
-    align-items: center;
-    list-style: none;
-}
-
-/* Item Projetos */
-.dropdown {
-    position: relative;
-}
-
-/* Submenu escondido */
-.dropdown .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    padding: 8px;
-    margin: 0;
-    background-color: var(--cor-primaria-escura);
-    flex-direction: column;
-    gap: 8px;
-    z-index: 1000;
-}
-
-/* Mostra o submenu ao passar o mouse */
-.dropdown:hover > .submenu {
-    display: flex;
-}
-
-/* Links do submenu */
-.submenu li {
-    width: 100%;
-}
-
-.submenu a {
-    display: block;
-    padding: 8px;
-    color: white;
-}
-
-/* ===== MENU HAMBÚRGUER ===== */
-
-.menu-icon {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-
-/* ===== CELULAR ===== */
-
-@media (max-width: 480px) {
-
     .menu-icon {
         display: block;
     }
 
     nav > ul {
         display: none;
+
         flex-direction: column;
         width: 100%;
+
         gap: 8px;
         margin-top: 16px;
     }
@@ -316,64 +303,124 @@ nav > ul {
         display: flex;
     }
 }
-/* ========================================
-   ESTADOS INTERATIVOS
-   ======================================== */
 
-/* Hover - quando passa o mouse */
-nav a:hover {
-    color: var(--cor-secundaria-clara);
-    transition: 0.3s;
+
+/* ==========================================================
+   BREAKPOINT 2 - CELULARES MAIORES
+   ========================================================== */
+
+@media (min-width: 481px) and (max-width: 600px) {
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--espaco-4);
+    }
+
+    main section {
+        grid-column: span 2;
+    }
 }
 
-/* Focus - quando selecionado pelo teclado */
+
+/* ==========================================================
+   BREAKPOINT 3 - TABLETS
+   ========================================================== */
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+    main {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    main section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ==========================================================
+   BREAKPOINT 4 - NOTEBOOKS
+   ========================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    main {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    main section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ==========================================================
+   BREAKPOINT 5 - DESKTOPS GRANDES
+   ========================================================== */
+
+@media (min-width: 1025px) {
+
+    main {
+        grid-template-columns: repeat(12, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    main section {
+        grid-column: span 12;
+    }
+}
+
+
+/* ==========================================================
+   ESTADOS INTERATIVOS
+   ========================================================== */
+
+nav a:hover {
+    color: var(--cor-secundaria-clara);
+}
+
 nav a:focus {
     outline: 3px solid var(--cor-secundaria);
     outline-offset: 3px;
 }
 
-/* Active - enquanto o elemento está sendo clicado */
 nav a:active {
     color: var(--cor-secundaria);
 }
 
-/* Transição suave */
-nav a {
-    transition: color 0.3s ease;
-}
 
-
-/* ========================================
+/* ==========================================================
    FORMULÁRIOS
-   ======================================== */
+   ========================================================== */
 
-/* Campo normal */
 input,
 textarea,
 select {
-    border: 2px solid #cccccc;
+    border: 2px solid #CCCCCC;
     border-radius: 6px;
     padding: 10px;
+
     transition: all 0.3s ease;
 }
 
-/* Campo selecionado */
 input:focus,
 textarea:focus,
 select:focus {
     outline: none;
+
     border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+
+    box-shadow:
+        0 0 0 3px rgba(46, 125, 50, 0.2);
 }
 
-/* Campo preenchido corretamente */
 input:valid,
 textarea:valid,
 select:valid {
-    border-color: #2E7D32;
+    border-color: var(--cor-primaria);
 }
 
-/* Campo preenchido incorretamente */
 input:invalid:not(:placeholder-shown),
 textarea:invalid:not(:placeholder-shown),
 select:invalid {
@@ -381,47 +428,53 @@ select:invalid {
 }
 
 
-/* ========================================
+/* ==========================================================
    BOTÕES
-   ======================================== */
+   ========================================================== */
 
 button {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
+
     border: none;
     border-radius: 6px;
+
     padding: 12px 20px;
+
     cursor: pointer;
+
     transition: all 0.3s ease;
 }
 
-/* Mouse sobre o botão */
 button:hover {
     background-color: var(--cor-primaria-clara);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Teclado/foco */
 button:focus {
     outline: 3px solid var(--cor-secundaria);
     outline-offset: 3px;
 }
 
-/* Botão pressionado */
 button:active {
     transform: scale(0.97);
 }
 
-/* Botão desabilitado */
 button:disabled {
     background-color: #BDBDBD;
     color: #757575;
+
     cursor: not-allowed;
+
     box-shadow: none;
 }
-/* ========================================
+
+
+/* ==========================================================
    COMPONENTES DE FEEDBACK
-   ======================================== */
+   ========================================================== */
 
 .feedback-demo {
     display: flex;
@@ -429,54 +482,92 @@ button:disabled {
     gap: var(--espaco-4);
 }
 
+
 /* BADGE */
 
 .projeto-status {
     display: flex;
     align-items: center;
+
     gap: var(--espaco-3);
+
     font-weight: bold;
 }
 
 .badge {
     background-color: var(--cor-primaria);
-    color: white;
+    color: var(--cor-branco);
+
     padding: 5px 12px;
+
     border-radius: 20px;
+
     font-size: 0.8rem;
 }
+
 
 /* ALERTA */
 
 .alerta {
     padding: var(--espaco-3);
+
     border-left: 5px solid var(--cor-primaria);
+
     background-color: #E8F5E9;
     color: var(--cor-texto);
+
     border-radius: 6px;
 }
+
 
 /* TOAST */
 
 .toast {
     background-color: var(--cor-primaria-escura);
-    color: white;
+    color: var(--cor-branco);
+
     padding: var(--espaco-3);
+
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.2);
+
     max-width: 350px;
 }
-/* AJUSTE PARA O CONTEÚDO DA SPA */
+
+
+/* ==========================================================
+   SPA - ÁREA DO JAVASCRIPT
+   ========================================================== */
+
+/*
+   CORREÇÃO IMPORTANTE:
+   O #app ocupa todas as 12 colunas do Grid.
+*/
 
 #app {
     width: 100%;
+    max-width: 100%;
+
+    grid-column: 1 / -1;
+
+    box-sizing: border-box;
 }
 
+
+/* Conteúdo das páginas da SPA */
+
 #app section {
+    width: 100%;
+
     background-color: var(--cor-branco);
+
     padding: var(--espaco-5);
     margin-bottom: var(--espaco-5);
+
     border-radius: 8px;
+
     box-sizing: border-box;
 }
 
@@ -487,68 +578,83 @@ button:disabled {
 
 #app p {
     font-size: var(--fonte-corpo);
+    max-width: 100%;
 }
 
 #app img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
 }
+
+
+/* Formulários dentro da SPA */
 
 #app form {
     display: flex;
     flex-direction: column;
+
     gap: var(--espaco-2);
+
     max-width: 500px;
 }
 
 #app input {
     padding: var(--espaco-2);
-    border: 1px solid #ccc;
+
+    border: 1px solid #CCCCCC;
     border-radius: 5px;
+
     font-size: 1rem;
 }
 
 #app button {
     padding: var(--espaco-2);
+
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
+
     border: none;
     border-radius: 5px;
+
     cursor: pointer;
 }
 
 #app button:hover {
     background-color: var(--cor-primaria-escura);
 }
-/* CORREÇÃO DO LAYOUT DA SPA */
 
-main {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: var(--espaco-6);
-    box-sizing: border-box;
+
+/* ==========================================================
+   AJUSTE DA SPA PARA TABLETS
+   ========================================================== */
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+    #app {
+        grid-column: 1 / -1;
+    }
 }
 
-/* Área onde o JavaScript coloca o conteúdo */
-#app {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+
+/* ==========================================================
+   AJUSTE DA SPA PARA NOTEBOOKS
+   ========================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    #app {
+        grid-column: 1 / -1;
+    }
 }
 
-#app section {
-    width: 100%;
-    box-sizing: border-box;
-}
 
-/* Garante que textos e imagens ocupem corretamente o espaço */
-#app p {
-    max-width: 100%;
-}
+/* ==========================================================
+   AJUSTE DA SPA PARA DESKTOP
+   ========================================================== */
 
-#app img {
-    max-width: 100%;
-    height: auto;
+@media (min-width: 1025px) {
+
+    #app {
+        grid-column: 1 / -1;
+    }
 }
